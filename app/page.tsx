@@ -1,4 +1,4 @@
-import styles from './page.module.css'
+import styles from './page.module.css';
 import { promises as fs } from "fs";
 
 type Talent = {
