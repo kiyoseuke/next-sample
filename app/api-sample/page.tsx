@@ -1,10 +1,12 @@
 import { Talent } from "@/types/Talent";
 import styles from "./page.module.css";
-import { promises as fs } from "fs";
 
 const getElement: () => Promise<JSX.Element> = async () => {
-  const json: string = await fs.readFile("resources/talent.json", { encoding: "utf8" });
-  const talents: Talent[] = JSON.parse(json);
+  // .envとか作って取るのかな？
+  const urlBase = "http://localhost:3000"
+
+  const response: Response = await fetch(`${urlBase}/api/talent-list`);
+  const talents: Talent[] = await response.json();
   const elements = [];
 
   for (const talent of talents) {
